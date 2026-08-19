@@ -16,45 +16,63 @@ window.addEventListener("DOMContentLoaded", event => {
         div.appendChild(e);
     });
 
-    function addCopyButtons(clipboard) {
-        const divs = document.querySelectorAll('table.lntable, .highlight > pre, .post-body > div > pre');
+    function getCodeBlock(containerEl) {
+        if (containerEl.classList.contains('codeblock')) {
+            const table = containerEl.querySelector('table.lntable');
+            if (table) {
+                const cells = table.querySelectorAll('.lntd');
+                return cells.length > 1 ? cells[1] : table;
+            }
+            return containerEl.querySelector('pre code') || containerEl.querySelector('code') || containerEl;
+        }
 
-        divs.forEach((containerEl) => {
+        if (containerEl.classList.contains('lntable')) {
+            return containerEl.querySelectorAll('.lntd')[1] || containerEl;
+        }
+
+        return containerEl.querySelector('code') || containerEl;
+    }
+
+    function setupCopyButton(containerEl, clipboard) {
+        const isCodeblock = containerEl.classList.contains('codeblock');
+        const button = isCodeblock
+            ? containerEl.querySelector('.copy-button')
+            : document.createElement('button');
+
+        if (!button) {
+            return;
+        }
+
+        if (!isCodeblock) {
             containerEl.parentNode.style.position = 'relative';
-
-            const button = document.createElement('button');
             button.className = 'copy-button';
             button.type = 'button';
-            button.innerText = copyText;
-
-            let codeBlock;
-            if (containerEl.classList.contains('lntable')) {
-                codeBlock = containerEl.querySelectorAll('.lntd')[1];
-            } else {
-                codeBlock = containerEl.querySelector('code');
-            }
-
-            button.addEventListener('click', () => {
-                clipboard.writeText(codeBlock.innerText).then(() => {
-                    /* Chrome doesn't seem to blur automatically,
-                       leaving the button in a focused state. */
-                    button.blur();
-
-                    button.innerText = copiedText;
-
-                    setTimeout(() => {
-                        button.innerText = copyText;
-                    }, 1000);
-                }).catch((error) => {
-                    button.innerText = 'Error';
-
-                    console.error(error);
-                });
-            });
-
             containerEl.appendChild(button);
+        }
 
-            {{ if .Site.Params.enableCopyAutoHide }}
+        const codeBlock = getCodeBlock(containerEl);
+        button.innerText = copyText;
+
+        button.addEventListener('click', () => {
+            clipboard.writeText(codeBlock.innerText).then(() => {
+                /* Chrome doesn't seem to blur automatically,
+                   leaving the button in a focused state. */
+                button.blur();
+
+                button.innerText = copiedText;
+
+                setTimeout(() => {
+                    button.innerText = copyText;
+                }, 1000);
+            }).catch((error) => {
+                button.innerText = 'Error';
+
+                console.error(error);
+            });
+        });
+
+        {{ if .Site.Params.enableCopyAutoHide }}
+            if (!isCodeblock) {
                 containerEl.parentNode.addEventListener('mouseover', () => {
                     button.style = 'visibility: visible; opacity: 1';
                 });
@@ -62,7 +80,17 @@ window.addEventListener("DOMContentLoaded", event => {
                 containerEl.parentNode.addEventListener('mouseout', () => {
                     button.style = 'visibility: hidden; opacity: 0';
                 });
-            {{ end }}
+            }
+        {{ end }}
+    }
+
+    function addCopyButtons(clipboard) {
+        document.querySelectorAll('.codeblock, table.lntable, .highlight > pre, .post-body > div > pre').forEach((containerEl) => {
+            if (!containerEl.classList.contains('codeblock') && containerEl.closest('.codeblock')) {
+                return;
+            }
+
+            setupCopyButton(containerEl, clipboard);
         });
     }
 

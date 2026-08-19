@@ -1,19 +1,26 @@
+:root {
+    scrollbar-width: thin;
+    scrollbar-color: alpha(var(--color-contrast-medium), 0.35) transparent;
+}
+
 ::-webkit-scrollbar {
-  width: 0.5rem;
-  height: 0.5rem;
+    width: 0.5rem;
+    height: 0.5rem;
 }
 ::-webkit-scrollbar-track {
-  background-color: var(--color-bg);
+    background-color: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: var(--color-contrast-low);
-  &:hover {
-      background-color: alpha(var(--color-primary), 0.5);
-  }
-  &:active {
-      background-color: alpha(var(--color-primary), 0.75);
-  }
+    background-color: alpha(var(--color-contrast-medium), 0.35);
+    border-radius: 999px;
+
+    &:hover {
+        background-color: var(--color-primary);
+    }
+    &:active {
+        background-color: alpha(var(--color-primary), 0.75);
+    }
 }
 ::-webkit-scrollbar-corner {
-  background-color: var(--color-bg);
+    background-color: transparent;
 }

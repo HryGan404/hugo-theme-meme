@@ -1,5 +1,107 @@
+.codeblock {
+    position: relative;
+    margin: 2rem 0;
+    border: 1px solid var(--color-contrast-low);
+    border-radius: 0.5rem;
+    overflow: auto;
+    background-color: alpha(var(--color-contrast-lower), 0.35);
+    scrollbar-width: thin;
+    scrollbar-color: alpha(var(--color-contrast-medium), 0.2) transparent;
+
+    &::-webkit-scrollbar {
+        width: 0.375rem;
+        height: 0.375rem;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: alpha(var(--color-contrast-medium), 0.2);
+        border-radius: 999px;
+    }
+
+    &:hover {
+        scrollbar-color: alpha(var(--color-contrast-medium), 0.5) transparent;
+    }
+
+    &:hover::-webkit-scrollbar-thumb {
+        background-color: alpha(var(--color-contrast-medium), 0.5);
+    }
+
+    .codeblock-header {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 2.25rem;
+        padding: 0.3rem 0.55rem 0.3rem 0.9rem;
+        border-bottom: 1px solid var(--color-contrast-low);
+        background-color: alpha(var(--color-contrast-lower), 0.92);
+        opacity: 0;
+        transition: opacity $duration;
+
+        &:hover,
+        &:focus-within {
+            opacity: 1;
+        }
+    }
+
+    .codeblock-lang {
+        color: var(--color-contrast-medium);
+        font-size: 0.75rem;
+        letter-spacing: 0.04em;
+        line-height: 1.4;
+        user-select: none;
+    }
+
+    .copy-button {
+        position: static;
+        display: inline-flex;
+        align-items: center;
+        margin: 0;
+        padding: 0.2em 0.65em;
+        border: 0;
+        border-radius: 0.375rem;
+        font-size: 0.75rem;
+        line-height: 1.4;
+        color: var(--color-contrast-medium);
+        background-color: transparent;
+        visibility: visible;
+        opacity: 1;
+
+        &:hover {
+            color: var(--color-primary);
+            background-color: alpha(var(--color-contrast-lower), 0.85);
+        }
+    }
+
+    .highlight,
+    .table-container {
+        margin: 0;
+    }
+
+    .table-container,
+    .chroma .lntable {
+        overflow: visible;
+    }
+
+    .highlight {
+        font-size: 0.8125rem;
+    }
+
+    .chroma {
+        background-color: transparent;
+    }
+}
+
 .highlight {
-    font-size: 0.8rem;
+    font-size: 0.8125rem;
     margin: 2rem 0;
     pre {
         margin: 0 !important;
@@ -19,8 +121,6 @@
 span.lnt {
     user-select: none;
     display: block;
-    margin-right: -1em !important;
-    padding: 0 !important;
     text-align: right;
 }
 
@@ -30,7 +130,7 @@ span.lnt {
 }
 
 @if ($enableOverflowY) {
-    .lntable, .highlight > pre {
+    .codeblock, .highlight > pre {
         max-height: $maxHeight;
     }
 }
@@ -40,9 +140,10 @@ span.lnt {
 
 /* LineTableTD */ .chroma .lntd { vertical-align: top; padding: 0; margin: 0; border: 0; }
 /* LineTable */ .chroma .lntable { border-spacing: 0; padding: 0; margin: 0; border: 0; width: auto; overflow: auto; display: block; }
-/* LineHighlight */ .chroma .hl { display: block; width: 100%;background-color: var(--chroma-line-numbers-background) }
-/* LineNumbersTable */ .chroma .lnt { margin-right: 0.4em; padding: 0 0.4em 0 0.4em;color: var(--chroma-line-numbers-color) }
-/* LineNumbers */ .chroma .ln { margin-right: 0.4em; padding: 0 0.4em 0 0.4em;color: var(--chroma-line-numbers-color) }
+/* LineNumberColumn */ .chroma .lntable .lntd:first-child { background-color: alpha(var(--color-contrast-lower), 0.35); }
+/* LineHighlight */ .chroma .hl { display: block; width: 100%;background-color: alpha(var(--color-primary), 0.08) }
+/* LineNumbersTable */ .chroma .lnt { display: block; margin: 0; padding: 0 0.4em 0 0.3em; text-align: right; color: alpha(var(--color-contrast-medium), 0.55); user-select: none; }
+/* LineNumbers */ .chroma .ln { margin: 0; padding: 0 0.4em; color: alpha(var(--color-contrast-medium), 0.55); }
 /* Keyword */ .chroma .k { color: var(--chroma-keyword-color) }
 /* KeywordConstant */ .chroma .kc { color: var(--chroma-keyword-color) }
 /* KeywordDeclaration */ .chroma .kd { color: var(--chroma-declaration-color); font-style: italic }

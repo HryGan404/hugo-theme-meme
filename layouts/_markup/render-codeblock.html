@@ -1,0 +1,12 @@
+{{- $lang := .Type -}}
+{{- $title := .Attributes.title -}}
+<div class="codeblock" data-lang="{{- with $lang }}{{ . }}{{- else }}text{{- end }}">
+  <div class="codeblock-header">
+    <span class="codeblock-lang">{{- with $title }}{{ . }}{{- else }}{{- with $lang }}{{ . }}{{- else }}text{{- end }}{{- end }}</span>
+    {{- if .Page.Site.Params.enableCopy -}}
+      <button class="copy-button" type="button" aria-label="{{ i18n "copy" .Page }}"></button>
+    {{- end -}}
+  </div>
+  {{- $result := transform.HighlightCodeBlock . -}}
+  {{ $result.Wrapped }}
+</div>

@@ -36,7 +36,7 @@
 }
 
 .list-item {
-    line-height: 2;
+    line-height: 1.75;
     position: relative;
     transition: border $duration;
     border-bottom: 1px dashed var(--color-contrast-low);
@@ -88,5 +88,5 @@
 
 .term-count {
     color: var(--color-contrast-medium);
-    font-size: 0.7em;
+    font-size: 0.75em;
 }
