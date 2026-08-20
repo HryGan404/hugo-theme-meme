@@ -60,11 +60,20 @@
 .post-body {
     margin-top: 5em !important;
     a {
-        text-decoration: underline;
-        text-decoration-color: var(--color-contrast-low);
+        text-decoration: none;
+        background-image:
+            linear-gradient(var(--color-primary), var(--color-primary)),
+            linear-gradient(var(--color-contrast-low), var(--color-contrast-low));
+        background-repeat: no-repeat;
+        background-position: 50% 100%, 0 100%;
+        background-size: 0% 1px, 100% 1px;
+        transition: color $duration, background-size 0.3s ease;
         &:hover {
-            text-decoration-color: alpha(var(--color-primary), 0.5);
+            background-size: 100% 1px, 100% 1px;
         }
+    }
+    a:has(img) {
+        background-image: none;
     }
 }
 
@@ -149,6 +158,7 @@ blockquote {
 }
 
 .contents {
+    position: relative;
     line-height: 1.5;
     ol, ul {
         list-style: none;
@@ -168,6 +178,26 @@ blockquote {
             color: var(--color-primary);
         }
     }
+}
+
+.toc-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 1.5em;
+    border-radius: 1px;
+    background-color: #e7a23c;
+    opacity: 0;
+    transition: transform 0.25s ease, height 0.25s ease, opacity 0.25s ease;
+
+    &.visible {
+        opacity: 1;
+    }
+}
+
+.post-toc-desktop .contents {
+    padding-left: 0.75em;
 }
 
 .post-toc-desktop .contents-title {

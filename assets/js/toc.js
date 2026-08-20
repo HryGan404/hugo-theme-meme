@@ -33,14 +33,18 @@ window.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('.header-wrapper');
     let ticking = false;
 
+    const contents = toc.querySelector('.contents');
+    const indicator = document.createElement('span');
+    indicator.className = 'toc-indicator';
+    contents.prepend(indicator);
+
     const setActive = (hash) => {
         links.forEach((link) => link.classList.remove('active'));
-        const link = byHash.get(hash);
-        if (link) {
-            link.classList.add('active');
-        } else if (links.length) {
-            links[0].classList.add('active');
-        }
+        const link = byHash.get(hash) || links[0];
+        link.classList.add('active');
+        indicator.style.transform = `translateY(${link.offsetTop}px)`;
+        indicator.style.height = `${link.offsetHeight}px`;
+        indicator.classList.add('visible');
     };
 
     const update = () => {
@@ -69,5 +73,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', requestTick, { passive: true });
     window.addEventListener('resize', requestTick, { passive: true });
+    window.addEventListener('load', requestTick);
     update();
 });
