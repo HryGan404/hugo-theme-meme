@@ -163,7 +163,8 @@ blockquote {
     }
     a {
         color: var(--color-contrast-medium);
-        &:hover {
+        &:hover,
+        &.active {
             color: var(--color-primary);
         }
     }

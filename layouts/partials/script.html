@@ -28,6 +28,10 @@
     {{- $scripts = union $scripts (slice "js/copy.js") -}}
 {{- end -}}
 
+{{- if .Site.Params.enableTOC -}}
+    {{- $scripts = union $scripts (slice "js/toc.js") -}}
+{{- end -}}
+
 {{- if and .Site.Params.enableComments (eq hugo.Environment "production") -}}
     {{- $scripts = union $scripts (slice "js/comments.js") -}}
 {{- end -}}
