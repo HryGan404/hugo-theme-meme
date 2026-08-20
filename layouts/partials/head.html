@@ -61,10 +61,14 @@
 
     <!-- Fonts -->
     {{- with .Site.Params.fontsLink -}}
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        {{- if hasPrefix . "/" -}}
+            <link rel="stylesheet" href="{{ . }}" />
+        {{- else -}}
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-        <link rel="stylesheet" href="{{ . }}" media="print" onload="this.media='all'" />
-        <noscript><link rel="stylesheet" href="{{ . }}" /></noscript>
+            <link rel="stylesheet" href="{{ . }}" media="print" onload="this.media='all'" />
+            <noscript><link rel="stylesheet" href="{{ . }}" /></noscript>
+        {{- end -}}
     {{- end }}
 
     <meta name="author" content="{{ .Params.author | default .Site.Params.author.name }}" />
