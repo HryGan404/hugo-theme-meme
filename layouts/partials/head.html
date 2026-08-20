@@ -1,6 +1,28 @@
 <head{{ if .Site.Params.openGraph }} prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#"{{ end }}>
     <meta charset="UTF-8" />
 
+    <script>
+        /* 跨文档视图转场生效时，跳过 body 淡入，避免双重动画 */
+        addEventListener("pagereveal", (event) => {
+            if (event.viewTransition) {
+                document.documentElement.dataset.vt = "";
+            }
+        }, { once: true });
+        /* bfcache 恢复（前进/后退）时跳过 body 淡入，
+           避免动画重播导致 fixed 页头与内容闪烁 */
+        addEventListener("pageshow", (event) => {
+            if (event.persisted) {
+                document.documentElement.dataset.restored = "";
+            }
+        });
+        /* 刷新页面时同样跳过：浏览器可能恢复滚动位置，
+           此时播放淡入会让 fixed 页头短暂错位 */
+        const navEntry = performance.getEntriesByType("navigation")[0];
+        if (navEntry && navEntry.type === "reload") {
+            document.documentElement.dataset.restored = "";
+        }
+    </script>
+
     {{ hugo.Generator }}
 
     {{- with .Site.Params.defaultTheme | default "light" -}}

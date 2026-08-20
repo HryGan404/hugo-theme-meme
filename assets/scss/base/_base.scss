@@ -4,6 +4,34 @@
     }
 }
 
+@view-transition {
+    navigation: auto;
+}
+
+@keyframes pageFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+html:not([data-vt]):not([data-restored]) body {
+    animation: pageFadeIn 0.3s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        animation: none;
+    }
+
+    html:not([data-vt]):not([data-restored]) body {
+        animation: none;
+    }
+}
+
 html, body {
     margin: 0;
     width: 100%;
