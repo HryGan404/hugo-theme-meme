@@ -3,31 +3,35 @@
     margin: 2rem 0;
     border: 1px solid var(--color-contrast-low);
     border-radius: 0.5rem;
-    overflow: auto;
+    overflow: hidden;
     background-color: alpha(var(--color-contrast-lower), 0.35);
-    scrollbar-width: thin;
-    scrollbar-color: alpha(var(--color-contrast-medium), 0.2) transparent;
 
-    &::-webkit-scrollbar {
-        width: 0.375rem;
-        height: 0.375rem;
-    }
+    .codeblock-body {
+        overflow: auto;
+        scrollbar-width: thin;
+        scrollbar-color: alpha(var(--color-contrast-medium), 0.2) transparent;
 
-    &::-webkit-scrollbar-track {
-        background-color: transparent;
-    }
+        &::-webkit-scrollbar {
+            width: 0.375rem;
+            height: 0.375rem;
+        }
 
-    &::-webkit-scrollbar-thumb {
-        background-color: alpha(var(--color-contrast-medium), 0.2);
-        border-radius: 999px;
-    }
+        &::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
 
-    &:hover {
-        scrollbar-color: alpha(var(--color-contrast-medium), 0.5) transparent;
-    }
+        &::-webkit-scrollbar-thumb {
+            background-color: alpha(var(--color-contrast-medium), 0.2);
+            border-radius: 999px;
+        }
 
-    &:hover::-webkit-scrollbar-thumb {
-        background-color: alpha(var(--color-contrast-medium), 0.5);
+        &:hover {
+            scrollbar-color: alpha(var(--color-contrast-medium), 0.5) transparent;
+        }
+
+        &:hover::-webkit-scrollbar-thumb {
+            background-color: alpha(var(--color-contrast-medium), 0.5);
+        }
     }
 
     .codeblock-header {
@@ -133,7 +137,7 @@ span.lnt {
 }
 
 @if ($enableOverflowY) {
-    .codeblock {
+    .codeblock-body {
         max-height: calc(0.8125rem * 1.5 * (#{$maxHeight} + 0.5));
     }
     .highlight > pre {

@@ -8,5 +8,7 @@
     {{- end -}}
   </div>
   {{- $result := transform.HighlightCodeBlock . -}}
-  {{ $result.Wrapped }}
+  <div class="codeblock-body">
+    {{ $result.Wrapped }}
+  </div>
 </div>
