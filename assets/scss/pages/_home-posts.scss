@@ -24,10 +24,11 @@ article.content.post.home {
     margin: 5em 0 0;
     padding: 0;
     display: flex;
-    justify-content: space-between;
 }
 .pagination-prev {
+    margin-right: auto;
 }
 .pagination-next {
+    margin-left: auto;
     text-align: right;
 }
