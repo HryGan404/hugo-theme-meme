@@ -76,7 +76,7 @@ uglyURLs = false
             strikethrough = true
             table = true
             taskList = true
-            typographer = false
+            typographer = true
         [markup.goldmark.parser]
             attribute = true
             autoHeadingID = true
@@ -400,7 +400,7 @@ uglyURLs = false
     # 字号单位
     fontUnit = "em"
     # 最大字号
-    largestFontSize = 2.5
+    largestFontSize = 2.0
     # 最小字号
     smallestFontSize = 1
 
@@ -409,7 +409,7 @@ uglyURLs = false
     # 列表页面
 
     # 宽度
-    listWidth = 36
+    listWidth = 45
     # 说明：如果留空（""），则用 42 作为默认值
     #      单位：em
 
@@ -425,13 +425,13 @@ uglyURLs = false
     # 说明：left（左边）或 right（右边）
 
     # 是否按月份分隔列表
-    groupByMonth = true
+    groupByMonth = false
 
     # 是否开启十二生肖
-    chineseZodiac = true
+    chineseZodiac = false
 
     # 是否翻译年份（仅对年份标题有效）
-    i18nYear = true
+    i18nYear = false
     # 是否翻译月份（仅对月份标题有效）
     i18nMonth = true
 
@@ -465,7 +465,7 @@ uglyURLs = false
     # Atom & RSS
 
     # 是否包括全文内容
-    includeContent = true
+    includeContent = false
     # 说明：如果否，则只会包含文章的摘要。关于摘
     #      要，Hugo 能按你设置的字数限制自动截
     #      取，你也可以在文章中通过
@@ -477,10 +477,6 @@ uglyURLs = false
     #      题自定义的 Atom 和 RSS 的模板中，
     #      有一个比手动指定更高的优先级——
     #      Front Matter 中的 `description`。
-
-    # 自定页脚（支持 Template 与 Markdown 语法）
-    feedFooter = """> 阅读原文：<{{ .Permalink }}>  
-> 博客公告：博客现已开通邮件订阅，欢迎[通过 Substack 订阅](https://username.substack.com)支持我的创作！"""
 
 
     ######################################
@@ -494,9 +490,9 @@ uglyURLs = false
     # 说明：light（浅色模式）或 dark（深色模式）
 
     # 是否隐藏模式切换开关
-    hideThemeToggle = false
+    hideThemeToggle = true
     # 是否在首页隐藏模式切换开关
-    hideThemeToggleInHome = false
+    hideThemeToggleInHome = true
     # 说明：如果开启了深色模式，即使你隐藏了开关，
     #      你的读者依然可能以深色模式阅读你的博
     #      客，如果该读者的系统设置为深色模式的
@@ -505,28 +501,25 @@ uglyURLs = false
     #      者依然可能以浅色模式模式阅读你的博客。
     #      除非，你开启下方这个选项。
 
-    overrideSystemPreferences = false
+    overrideSystemPreferences = true
 
 
     ######################################
     # 网页应用
 
     # 说明：前往 https://realfavicongenerator.net/
-    #      生成相关图标和文件，下载后解压。
+    #      生成相关图标和文件，下载后解压，仅保留
+    #      android-chrome-512x512.png、
+    #      apple-touch-icon.png、
+    #      mstile-150x150.png、
+    #      safari-pinned-tab.svg、favicon.ico、
+    #      site.webmanifest 这些文件，删除其余。
     #      然后将这些文件移动到 ~/blog/static/icons/
     #      目录下，再将 favicon.ico、site.webmanifest
     #      移动到 ~/blog/static/ 目录下，
     #      最后将 site.webmanifest 重命名为
     #      manifest.json，并检查和修改相关内容
     #      （图标的路径）。
-
-    # 注意：要检查你的图标
-    #      请前往 https://realfavicongenerator.net/favicon-checker。
-    #      如果检测到任何问题，检查生成的文件和
-    #      ~/blog/themes/meme/static/ 目录下
-    #      相关文件的文件名差异。如果有差异，
-    #      这意味着某些文件可能已经过时。
-    #      如有需要，请提 Issue。
 
     themeColor = "#fff"
     themeColorDark = "#16171d"
@@ -537,7 +530,7 @@ uglyURLs = false
 
     jsonLD = true
     openGraph = true
-    twitterCards = true
+    twitterCards = false
     # 注意：如果你设置 twitterCards 为 `true`，
     #      请务必开启 openGraph。否则，网页的
     #      Twitter Cards 信息将会不完整。
@@ -562,7 +555,7 @@ uglyURLs = false
     # KaTeX 公式支持（包括化学方程式）
 
     # 是否开启（全局设置）
-    enableKaTeX = false
+    enableKaTeX = true
     # 说明：文章的 Front Matter 中的 `katex`
     #      的优先级高于此处
 
@@ -696,7 +689,7 @@ uglyURLs = false
     giscusLang = "zh-CN"
     # 说明：https://giscus.app/zh-CN
 
-    # Remark42
+    ## Remark42
     enableRemark42 = false
     remark42Host = ""
     remark42SiteId = "remark"
@@ -773,7 +766,7 @@ uglyURLs = false
     # 注意：只支持 HSL 颜色值
 
     # 文章的内容宽度
-    postWidth = 36
+    postWidth = 45
     # 说明：如果留空（""），则用 42 作为默认值
     #      单位：em
 
@@ -860,7 +853,7 @@ uglyURLs = false
     # 文章目录
 
     # 是否开启（全局设置）
-    enableTOC = false
+    enableTOC = true
     # 说明：文章的 Front Matter 中的 `toc`
     #      的优先级高于此处
 
@@ -989,7 +982,7 @@ uglyURLs = false
     #      SVG，则可留空（""）品牌栏字体。
 
     # 品牌栏
-    fontFamilySiteBrand = ""
+    fontFamilySiteBrand = "'Cinzel', 'Noto Serif SC', serif"
     # 菜单栏
     fontFamilyMenu = ""
     # 文章标题、文章副标题、列表标题、列表的年份和月份标题、相关文章标题、文章上下篇标题、表格的表头、定义列表中的术语
@@ -997,9 +990,9 @@ uglyURLs = false
     # 分节标题、目录标题
     fontFamilyHeadings = "'Noto Serif SC', serif"
     # 代码、上标、文章元信息、文章更新徽章、文章的 Git 版本信息、极简页脚、不蒜子站点浏览计数
-    fontFamilyCode = "'Source Code Pro', 'Noto Serif SC', monospace"
+    fontFamilyCode = "'Source Code Pro', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace"
     # 引用
-    fontFamilyQuote = ""
+    fontFamilyQuote = "'Noto Serif SC', serif"
     # 文章目录
     fontFamilyTOC = ""
     # 说明文字
@@ -1007,10 +1000,10 @@ uglyURLs = false
     # 页脚
     fontFamilyFooter = ""
     # 主体
-    fontFamilyBody = "'Noto Serif SC', serif"
+    fontFamilyBody = "'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif"
 
     # 网络字体链接
-    fontsLink = "https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    fontsLink = "https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;500;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap"
     # 说明：要想读者一定体验到你设置的字体，最好
     #      采用网络字体。MemE 主题目前仅支持
     #      Google Fonts 的链接，请前往
@@ -1020,7 +1013,7 @@ uglyURLs = false
     ######################################
     ## 字号（单位：px）
 
-    fontSize = 18
+    fontSize = 16
 
     ######################################
     ## 制表符的宽度
@@ -1030,7 +1023,7 @@ uglyURLs = false
     ######################################
     ## 行间距
 
-    lineHeight = 2
+    lineHeight = 1.75
     # 说明：只会应用到文章的段落和目录
 
     ######################################
@@ -1054,7 +1047,7 @@ uglyURLs = false
     ## 两端对齐
 
     # 是否开启（全局设置）
-    enableJustify = true
+    enableJustify = false
     # 说明：文章的 Front Matter 中的 `align`
     #      的优先级高于此处
 
@@ -1088,8 +1081,8 @@ uglyURLs = false
     ######################################
     ## 着重号
 
-    # 说明：MemE 主题定义的语法 `..文本..`
-    #      https://www.w3.org/International/clreq/#id84
+    # 说明：MemE 主题自创的新 Markdown 语法
+    #      `..文本..`
 
     # 是否开启
     enableEmphasisPoint = true
@@ -1176,7 +1169,7 @@ uglyURLs = false
     # 文章分享
 
     # 是否开启
-    enablePostShare = true
+    enablePostShare = false
 
     # 是否显示（全局设置）
     displayPostShare = true
@@ -1320,7 +1313,7 @@ uglyURLs = false
     #      https://busuanzi.ibruce.info/
 
     # 社交链接
-    enableSocials = true
+    enableSocials = false
     # 说明：见 data/Socials.toml
 
 
@@ -1348,8 +1341,8 @@ uglyURLs = false
     # 是否开启竖直滚动
     enableOverflowY = true
     # 最大高度
-    maxHeight = 20
-    # 单位：em
+    maxHeight = 36
+    # 单位：行（显示的行数）
 
     # 是否开启复制
     enableCopy = true
