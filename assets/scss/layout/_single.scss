@@ -3,7 +3,7 @@
 }
 
 @media (min-width: 1280px) {
-    .single .main-inner {
+    .single .main-inner.post-main-inner {
         width: auto;
         max-width: calc(#{$postWidth} + 32em);
     }

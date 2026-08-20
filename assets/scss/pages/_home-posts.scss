@@ -24,12 +24,13 @@ article.content.post.home {
     margin: 5em 0 0;
     padding: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 3em;
 }
 .pagination-prev {
-    margin-right: auto;
+    margin-right: 0;
 }
 .pagination-next {
-    margin-left: auto;
+    margin-left: 0;
     text-align: right;
 }
