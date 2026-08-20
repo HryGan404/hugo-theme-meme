@@ -54,7 +54,7 @@
 {{ end }}
 
 {{ with .Site.Params.maxHeight | default 20 }}
-    $maxHeight: {{ . }}em;
+    $maxHeight: {{ . }};
 {{ end }}
 
 {{ if .Site.Params.enableCopy }}

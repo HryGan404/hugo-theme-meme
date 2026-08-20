@@ -324,12 +324,6 @@ pre {
     }
 }
 
-@if ($enableOverflowY) {
-    pre {
-        max-height: $maxHeight;
-    }
-}
-
 @if ($enableCopy) {
     .copy-button {
         position: absolute;

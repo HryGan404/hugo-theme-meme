@@ -1349,7 +1349,7 @@ uglyURLs = false
     enableOverflowY = true
     # 最大高度
     maxHeight = 20
-    # 單位：em
+    # 單位：行（顯示的行數）
 
     # 是否開啟複製
     enableCopy = true

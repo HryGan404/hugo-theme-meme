@@ -1385,7 +1385,7 @@ uglyURLs = false
 
     enableOverflowY = true
     maxHeight = 20
-    # Unit: em
+    # Unit: lines (visible lines)
 
     enableCopy = true
     enableCopyAutoHide = true

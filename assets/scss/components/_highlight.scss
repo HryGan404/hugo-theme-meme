@@ -133,8 +133,11 @@ span.lnt {
 }
 
 @if ($enableOverflowY) {
-    .codeblock, .highlight > pre {
-        max-height: $maxHeight;
+    .codeblock {
+        max-height: calc(0.8125rem * 1.5 * (#{$maxHeight} + 0.5));
+    }
+    .highlight > pre {
+        max-height: calc(0.8125rem * 1.5 * #{$maxHeight});
     }
 }
 
