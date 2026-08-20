@@ -9,6 +9,7 @@
 window.addEventListener("DOMContentLoaded", event => {
     const copyText = '{{ i18n "copy" }}';
     const copiedText = '{{ i18n "copied" }}';
+    const copyIcon = '{{ partial "utils/icon.html" (dict "$" . "name" "copy" "class" "copy-icon") }}';
 
     document.querySelectorAll('.post-body > pre').forEach((e) => {
         const div = document.createElement('div');
@@ -51,7 +52,9 @@ window.addEventListener("DOMContentLoaded", event => {
         }
 
         const codeBlock = getCodeBlock(containerEl);
-        button.innerText = copyText;
+        button.innerHTML = copyIcon;
+        button.setAttribute('aria-label', copyText);
+        button.setAttribute('data-state', 'copy');
 
         button.addEventListener('click', () => {
             clipboard.writeText(codeBlock.innerText).then(() => {
@@ -59,13 +62,18 @@ window.addEventListener("DOMContentLoaded", event => {
                    leaving the button in a focused state. */
                 button.blur();
 
-                button.innerText = copiedText;
+                button.setAttribute('aria-label', copiedText);
+                button.setAttribute('data-state', 'copied');
+                button.classList.add('is-copied');
 
                 setTimeout(() => {
-                    button.innerText = copyText;
+                    button.setAttribute('aria-label', copyText);
+                    button.setAttribute('data-state', 'copy');
+                    button.classList.remove('is-copied');
                 }, 1000);
             }).catch((error) => {
-                button.innerText = 'Error';
+                button.setAttribute('aria-label', 'Error');
+                button.setAttribute('data-state', 'error');
 
                 console.error(error);
             });
