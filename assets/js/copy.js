@@ -10,6 +10,7 @@ window.addEventListener("DOMContentLoaded", event => {
     const copyText = '{{ i18n "copy" }}';
     const copiedText = '{{ i18n "copied" }}';
     const copyIcon = '{{ partial "utils/icon.html" (dict "$" . "name" "copy" "class" "copy-icon") }}';
+    const copiedIcon = '{{ partial "utils/icon.html" (dict "$" . "name" "circle-check" "class" "copied-icon") }}';
 
     document.querySelectorAll('.post-body > pre').forEach((e) => {
         const div = document.createElement('div');
@@ -65,11 +66,13 @@ window.addEventListener("DOMContentLoaded", event => {
                 button.setAttribute('aria-label', copiedText);
                 button.setAttribute('data-state', 'copied');
                 button.classList.add('is-copied');
+                button.innerHTML = copiedIcon;
 
                 setTimeout(() => {
                     button.setAttribute('aria-label', copyText);
                     button.setAttribute('data-state', 'copy');
                     button.classList.remove('is-copied');
+                    button.innerHTML = copyIcon;
                 }, 1000);
             }).catch((error) => {
                 button.setAttribute('aria-label', 'Error');
