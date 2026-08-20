@@ -2,12 +2,48 @@
     width: $postWidth;
 }
 
+@media (min-width: 1280px) {
+    .single .main-inner {
+        width: auto;
+        max-width: calc(#{$postWidth} + 32em);
+    }
+
+    .post-layout {
+        display: grid;
+        grid-template-columns: 1fr minmax(0, $postWidth) 1fr;
+        column-gap: 2em;
+        align-items: start;
+    }
+
+    .post-layout > .post {
+        grid-column: 2;
+        min-width: 0;
+    }
+
+    .post-toc-desktop {
+        display: block;
+        grid-column: 3;
+        justify-self: start;
+        width: 14rem;
+        font-size: 0.8125rem;
+        position: sticky;
+        top: 6rem;
+        max-height: calc(100vh - 8rem);
+        overflow-y: auto;
+    }
+
+    .post-toc-mobile {
+        display: none;
+    }
+}
+
 .post-title {
     text-align: center;
+    font-size: 2em;
 }
 
 .post-subtitle {
-    font-size: 1.15em;
+    font-size: 1.25em;
     text-align: center;
     font-weight: 500;
     margin-top: -0.5em;
@@ -17,7 +53,7 @@
 .post-description {
     text-align: center;
     margin: 1rem 0;
-    font-size: 0.875em;
+    font-size: 1.0625em;
     color: var(--color-contrast-medium);
 }
 
@@ -113,16 +149,57 @@ blockquote {
 }
 
 .contents {
-    margin-top: 5em;
+    line-height: 1.5;
     ol, ul {
         list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    li {
+        margin: 0.25em 0;
+    }
+    li > ol, li > ul {
+        padding-left: 1em;
+    }
+    a {
+        color: var(--color-contrast-medium);
+        &:hover {
+            color: var(--color-primary);
+        }
     }
 }
-ol, ul {
-    &.toc {
-        padding: 0;
-        overflow: auto hidden;
-        white-space: nowrap;
+
+.post-toc-desktop .contents-title {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin: 0 0 0.75em;
+    letter-spacing: 0.02em;
+    color: var(--color-contrast-medium);
+}
+
+.post-toc-mobile {
+    margin: 2em 0 0;
+    font-size: 0.8125rem;
+    summary {
+        cursor: pointer;
+        font-weight: 700;
+        color: var(--color-contrast-medium);
+    }
+    .contents {
+        margin-top: 1em;
+    }
+}
+
+.single-extra {
+    width: $postWidth;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+@media (max-width: 1279.98px) {
+    .post-toc-desktop {
+        display: none;
     }
 }
 

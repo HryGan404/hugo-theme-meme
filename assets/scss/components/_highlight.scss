@@ -140,13 +140,13 @@ span.lnt {
 
 /* LineTableTD */ .chroma .lntd { vertical-align: top; padding: 0; margin: 0; border: 0; }
 /* LineTable */ .chroma .lntable { border-spacing: 0; padding: 0; margin: 0; border: 0; width: auto; overflow: auto; display: block; }
-/* LineNumberColumn */ .chroma .lntable .lntd:first-child { background-color: alpha(var(--color-contrast-lower), 0.35); }
+/* LineNumberColumn */ .chroma .lntable .lntd:first-child { background-color: transparent; }
 /* LineHighlight */ .chroma .hl { display: block; width: 100%;background-color: alpha(var(--color-primary), 0.08) }
-/* LineNumbersTable */ .chroma .lnt { display: block; margin: 0; padding: 0 0.4em 0 0.3em; text-align: right; color: alpha(var(--color-contrast-medium), 0.55); user-select: none; }
-/* LineNumbers */ .chroma .ln { margin: 0; padding: 0 0.4em; color: alpha(var(--color-contrast-medium), 0.55); }
+/* LineNumbersTable */ .chroma .lnt { display: block; margin: 0; padding: 0 0.45em 0 0.3em; text-align: right; color: alpha(var(--color-contrast-medium), 0.45); user-select: none; }
+/* LineNumbers */ .chroma .ln { margin: 0; padding: 0 0.4em; color: alpha(var(--color-contrast-medium), 0.45); }
 /* Keyword */ .chroma .k { color: var(--chroma-keyword-color) }
 /* KeywordConstant */ .chroma .kc { color: var(--chroma-keyword-color) }
-/* KeywordDeclaration */ .chroma .kd { color: var(--chroma-declaration-color); font-style: italic }
+/* KeywordDeclaration */ .chroma .kd { color: var(--chroma-keyword-color); font-style: italic }
 /* KeywordNamespace */ .chroma .kn { color: var(--chroma-name-color) }
 /* KeywordPseudo */ .chroma .kp { color: var(--chroma-keyword-color) }
 /* KeywordReserved */ .chroma .kr { color: var(--chroma-keyword-color) }

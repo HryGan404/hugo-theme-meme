@@ -26,16 +26,14 @@
         /* https://xyproto.github.io/splash/docs/all.html */
         /* Color values matching manni style */
 
-        --chroma-line-numbers-background: #ffffcc;
-        --chroma-line-numbers-color: #7f7f7f;
-        --chroma-keyword-color: #006699;
-        --chroma-name-color: #9999ff;
-        --chroma-attribute-color: #330099;
-        --chroma-literal-color: #cc3300;
-        --chroma-number-color: #ff6600;
-        --chroma-comment-color: #0099ff;
-        --chroma-deleted-color: #ffcccc;
-        --chroma-output-color: #aaaaaa;
+        --chroma-keyword-color: #d73a49;
+        --chroma-name-color: #6f42c1;
+        --chroma-attribute-color: #005cc5;
+        --chroma-literal-color: #032f62;
+        --chroma-number-color: #005cc5;
+        --chroma-comment-color: #6a737d;
+        --chroma-deleted-color: #b31d28;
+        --chroma-output-color: #24292e;
     }
 }
 

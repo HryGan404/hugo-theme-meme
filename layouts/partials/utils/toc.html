@@ -1,4 +1,12 @@
-{{- $toc := .TableOfContents -}}
+{{- $page := . -}}
+{{- $linkHeadings := true -}}
+{{- if reflect.IsMap . -}}
+    {{- $page = .Page -}}
+    {{- if isset . "linkHeadings" -}}
+        {{- $linkHeadings = .linkHeadings -}}
+    {{- end -}}
+{{- end -}}
+{{- $toc := $page.TableOfContents -}}
 
 <!-- Change TOC Attribute -->
 {{- $regexPatternTOC := `<nav id="TableOfContents">` -}}
@@ -10,15 +18,8 @@
 {{- $regexReplacementTOC := `$1<$2 class="toc">` -}}
 {{- $toc = $toc | replaceRE $regexPatternTOC $regexReplacementTOC -}}
 
-<!-- Inject TOC Title -->
-{{- if .Site.Params.displayTOCTitle -}}
-    {{- $regexPatternTOC := `(<nav class="contents">\n.+)(<(ol|ul) class="toc">)` -}}
-    {{- $regexReplacementTOC := (printf `$1<h2 id="contents" class="contents-title">%s</h2>$2` (i18n "tocTitle")) -}}
-    {{- $toc = $toc | replaceRE $regexPatternTOC $regexReplacementTOC -}}
-{{- end -}}
-
 <!-- Link Headings to TOC -->
-{{- if .Site.Params.linkHeadingsToTOC -}}
+{{- if and $linkHeadings $page.Site.Params.linkHeadingsToTOC -}}
     {{- $regexPatternTOC := `(<a)( href="#([^"]+)">)` -}}
     {{- $regexReplacementTOC := `$1 id="contents:$3"$2` -}}
     {{- $toc = $toc | replaceRE $regexPatternTOC $regexReplacementTOC -}}
