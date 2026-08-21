@@ -59,7 +59,7 @@
 
 .post-body {
     margin-top: 5em !important;
-    a {
+    a:not(.headings):not(.anchor-link) {
         text-decoration: none;
         background-image:
             linear-gradient(var(--color-primary), var(--color-primary)),
@@ -269,6 +269,16 @@ blockquote {
 .anchor-link {
     position: absolute;
     transform: translate(-150%);
+    // Bridge the gap between the icon and the heading box so the
+    // pointer never crosses a hover dead-zone on its way to the icon.
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: -0.5em;
+        width: 0.5em;
+    }
 }
 .anchor-icon {
     width: 0.75em;
