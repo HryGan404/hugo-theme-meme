@@ -1,11 +1,18 @@
 {{- $ := index . "$" -}}
 {{- $iconName := .iconName | default "search" -}}
-<form id="search" class="search" role="search">
-    <label for="search-input">
-        {{- partial "utils/icon.html" (dict "$" $ "name" $iconName "class" "search-icon") -}}
-    </label>
-    <input type="search" id="search-input" class="search-input">
-</form>
+{{- $local := $.Site.Params.enableLocalSearch -}}
+<div class="search-container">
+    <form id="search" class="search" role="search"{{ if $local }} data-search{{ end }}>
+        <label for="search-input">
+            {{- partial "utils/icon.html" (dict "$" $ "name" $iconName "class" "search-icon") -}}
+        </label>
+        <input type="search" id="search-input" class="search-input"
+        {{- if $local }} placeholder="{{ i18n "searchPlaceholder" }}" autocomplete="off"{{ end }}>
+    </form>
+    {{- if $local }}
+        <div id="search-results" class="search-results" hidden></div>
+    {{- end }}
+</div>
 
 <template id="search-result" hidden>
     <article class="content post">

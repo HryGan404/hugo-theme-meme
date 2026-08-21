@@ -211,3 +211,9 @@ other = "8"
 
 [9]
 other = "9"
+
+[searchPlaceholder]
+other = "Search posts…"
+
+[searchNoResults]
+other = "No results found"

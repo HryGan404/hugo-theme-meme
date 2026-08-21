@@ -1427,6 +1427,17 @@ uglyURLs = false
 
 
     ######################################
+    # 本地搜索
+
+    # 说明：纯静态中文全文搜索（客户端子串匹配，
+    #      无需外部服务）。开启后每次构建还需生成索引：
+    #      node scripts/build-search-index.mjs public
+    #      索引输出至 public/search/，随 public 一起部署。
+
+    enableLocalSearch = false
+
+
+    ######################################
     # 404 页面
 
     # 视频封面

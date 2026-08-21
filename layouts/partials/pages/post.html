@@ -40,7 +40,8 @@
                     </details>
                 {{ end }}
 
-                <div class="post-body e-content">
+                <div class="post-body e-content"
+                {{- if .Site.Params.enableLocalSearch }} data-search-body data-search-title="{{ .Title }}"{{ end }}>
                     {{ partial "utils/content.html" . }}
                 </div>
 

@@ -211,3 +211,9 @@ other = "八"
 
 [9]
 other = "九"
+
+[searchPlaceholder]
+other = "搜索文章…"
+
+[searchNoResults]
+other = "未找到相关内容"
