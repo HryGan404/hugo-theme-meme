@@ -32,10 +32,21 @@
         text-align: right;
         font-size: 87.5%;
     }
+    .menu {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
     .menu-item {
         margin-left: 0.5em;
+        display: flex;
+        align-items: center;
+        a {
+            display: flex;
+            align-items: center;
+        }
         .icon {
-            margin: 0 0.3em 0.2em 0;
+            margin: 0 0.3em 0 0;
         }
     }
 } @else {
