@@ -1,0 +1,25 @@
+{{- $src := .Destination -}}
+{{- $resource := "" -}}
+{{- if not (findRE `^https?:` $src) -}}
+    {{- if strings.HasPrefix $src "/" -}}
+        {{- with resources.Get (strings.TrimPrefix "/" $src) -}}
+            {{- $resource = . -}}
+        {{- end -}}
+    {{- else -}}
+        {{- with .Page.Resources.GetMatch $src -}}
+            {{- $resource = . -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+{{- $width := .Attributes.width -}}
+{{- $height := .Attributes.height -}}
+{{- if and $resource (ne $resource.MediaType.SubType "svg") -}}
+    {{- $width = $width | default $resource.Width -}}
+    {{- $height = $height | default $resource.Height -}}
+{{- end -}}
+<img src="{{ if $resource }}{{ $resource.RelPermalink }}{{ else }}{{ $src }}{{ end }}"
+    alt="{{ .Text }}"
+    {{- with .Title }} title="{{ . }}"{{ end }}
+    {{- with $width }} width="{{ . }}"{{ end }}
+    {{- with $height }} height="{{ . }}"{{ end }}
+    loading="lazy" decoding="async">

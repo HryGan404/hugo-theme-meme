@@ -17,7 +17,10 @@
     }
 }
 
-html:not([data-vt]):not([data-restored]) body {
+/* 仅在非 VT 加载时播放淡入（head 内联脚本在 pagereveal 判定后
+   打 data-novt 标记）。VT 转场期间 body 不应用任何动画，
+   快照与交叉淡化完全由浏览器接管，避免双重动画造成闪烁。 */
+html[data-novt] body {
     animation: pageFadeIn 0.3s ease-out;
 }
 
@@ -27,7 +30,7 @@ html:not([data-vt]):not([data-restored]) body {
         animation: none;
     }
 
-    html:not([data-vt]):not([data-restored]) body {
+    html[data-novt] body {
         animation: none;
     }
 }

@@ -2,25 +2,20 @@
     <meta charset="UTF-8" />
 
     <script>
-        /* 跨文档视图转场生效时，跳过 body 淡入，避免双重动画 */
+        /* 页面转场防闪烁（与 _base.scss 的 pageFadeIn 配套）：
+           - 跨文档视图转场（VT）触发时，交叉淡化完全由浏览器接管，
+             body 不施加任何动画，避免双重淡入造成"加载两次"的闪烁；
+           - 仅在非 VT 加载（首次到达、VT 被中止、不支持 VT 的浏览器）
+             时打 data-novt 标记，播放 0.3s 淡入；
+           - pagereveal 在首帧渲染前触发，此时判定不会污染 VT 快照；
+           - bfcache 恢复不会再次触发 pagereveal，天然跳过动画；
+           - 刷新时浏览器会恢复滚动位置，跳过淡入避免 fixed 页头错位。 */
         addEventListener("pagereveal", (event) => {
-            if (event.viewTransition) {
-                document.documentElement.dataset.vt = "";
-            }
+            if (event.viewTransition) return;
+            const navEntry = performance.getEntriesByType("navigation")[0];
+            if (navEntry && navEntry.type === "reload") return;
+            document.documentElement.dataset.novt = "";
         }, { once: true });
-        /* bfcache 恢复（前进/后退）时跳过 body 淡入，
-           避免动画重播导致 fixed 页头与内容闪烁 */
-        addEventListener("pageshow", (event) => {
-            if (event.persisted) {
-                document.documentElement.dataset.restored = "";
-            }
-        });
-        /* 刷新页面时同样跳过：浏览器可能恢复滚动位置，
-           此时播放淡入会让 fixed 页头短暂错位 */
-        const navEntry = performance.getEntriesByType("navigation")[0];
-        if (navEntry && navEntry.type === "reload") {
-            document.documentElement.dataset.restored = "";
-        }
     </script>
 
     {{ hugo.Generator }}
