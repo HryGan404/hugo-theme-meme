@@ -1,4 +1,4 @@
-{{- $scripts := slice "js/main.js" -}}
+{{- $scripts := slice "js/main.js" "js/page-lifecycle.js" -}}
 
 {{- if and .Site.Params.enableForceHTTPS (eq hugo.Environment "production") -}}
     {{- $scripts = union $scripts (slice "js/force-https.js") -}}
@@ -31,6 +31,7 @@
 {{- if .Site.Params.enableTOC -}}
     {{- $scripts = union $scripts (slice "js/toc.js") -}}
 {{- end -}}
+
 
 {{- if and .Site.Params.enableComments (eq hugo.Environment "production") -}}
     {{- $scripts = union $scripts (slice "js/comments.js") -}}

@@ -1,10 +1,10 @@
-window.addEventListener("DOMContentLoaded", event => {
+function initComments(root) {
     {{ if .Site.Params.autoLoadComments }}
         if (typeof loadComments === 'function') {
             loadComments()
         }
     {{ else }}
-        const commentsToggle = document.getElementById('load-comments');
+        const commentsToggle = root.querySelector('#load-comments');
 
         if (commentsToggle !== null) {
             commentsToggle.addEventListener('click', function () {
@@ -13,4 +13,8 @@ window.addEventListener("DOMContentLoaded", event => {
             });
         }
     {{  end }}
-}, {once: true});
+}
+
+document.addEventListener('meme:page-ready', (event) => {
+    initComments(event.detail.root);
+});

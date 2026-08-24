@@ -2,7 +2,7 @@
    多词（空白分隔、AND）子串匹配，结果渲染到头部下拉面板。
    中文不做分词，直接子串匹配，避免分词误差。
    与 layouts/partials/components/search.html 的 data-search 表单配套。 */
-window.addEventListener('DOMContentLoaded', () => {
+function initLocalSearch() {
     const form = document.getElementById('search');
     if (!form || !form.hasAttribute('data-search')) {
         return;
@@ -174,4 +174,6 @@ window.addEventListener('DOMContentLoaded', () => {
             close();
         }
     });
-});
+}
+
+document.addEventListener('meme:app-ready', initLocalSearch);

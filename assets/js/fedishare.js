@@ -30,45 +30,50 @@ function getSoftwareName(instance) {
     });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    let params = new URLSearchParams(location.hash.slice(1));
-    document.getElementById("title").value = params.get("title");
-    document.getElementById("url").value = params.get("url");
-
-    let description = params.get("description");
-    if (description.length > 250)
-        description = description.slice(0, 249) + "…";
-    document.getElementById("description").value = description;
-
-    if ("mastodonInstance" in localStorage) {
-        document.getElementById("instance").value = localStorage.mastodonInstance;
-        document.getElementById("rememberInstance").checked = true;
+function initFedishare(root) {
+    const getElement = (id) => root.querySelector(`#${id}`);
+    if (!getElement('shareForm')) {
+        return;
     }
 
-    document.getElementById("shareForm").addEventListener("submit", event => {
+    let params = new URLSearchParams(location.hash.slice(1));
+    getElement("title").value = params.get("title");
+    getElement("url").value = params.get("url");
+
+    let description = params.get("description") || '';
+    if (description.length > 250)
+        description = description.slice(0, 249) + "…";
+    getElement("description").value = description;
+
+    if ("mastodonInstance" in localStorage) {
+        getElement("instance").value = localStorage.mastodonInstance;
+        getElement("rememberInstance").checked = true;
+    }
+
+    getElement("shareForm").addEventListener("submit", event => {
         event.preventDefault();
 
         if (event.target.disabled)
             return;
 
-        let instance = document.getElementById("instance").value.trim();
+        let instance = getElement("instance").value.trim();
 
         // Fix URLs mistakenly entered into the instance field
         instance = instance.replace(/^\w+:[\/\\]*/, "");
         instance = instance.replace(/[\/\\].*/, "");
-        document.getElementById("instance").value = instance;
+        getElement("instance").value = instance;
 
         if (instance == "")
             return;
 
-        if (document.getElementById("rememberInstance").checked)
+        if (getElement("rememberInstance").checked)
             localStorage.mastodonInstance = instance;
         else
             delete localStorage.mastodonInstance;
 
-        let title = document.getElementById("title").value.trim();
-        let description = document.getElementById("description").value.trim();
-        let url = document.getElementById("url").value.trim();
+        let title = getElement("title").value.trim();
+        let description = getElement("description").value.trim();
+        let url = getElement("url").value.trim();
         let text = title + "\n" + description + "\n" + url;
 
         getSoftwareName(instance).then(name => {
@@ -82,6 +87,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    document.getElementById("instance").addEventListener("input", updateState);
+    getElement("instance").addEventListener("input", updateState);
     updateState();
+}
+
+document.addEventListener('meme:page-ready', (event) => {
+    initFedishare(event.detail.root);
 });

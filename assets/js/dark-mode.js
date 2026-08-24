@@ -37,7 +37,7 @@ mediaQuery.addEventListener('change', () => {
     }
 });
 
-window.addEventListener("DOMContentLoaded", () => {
+function initDarkMode() {
     // Update meta tags and code highlighting
     changeMode();
     
@@ -58,7 +58,9 @@ window.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-}, {once: true});
+}
+
+document.addEventListener('meme:app-ready', initDarkMode);
 
 // Sync Across Tabs
 // https://codepen.io/tevko/pen/GgWYpg (old reference)

@@ -1,4 +1,4 @@
-window.addEventListener("DOMContentLoaded", event => {
+function initAlgoliaSearch() {
     let origContent = null;
 
     const search = instantsearch({
@@ -106,4 +106,6 @@ window.addEventListener("DOMContentLoaded", event => {
         }
         return result;
     }
-}, {once: true});
+}
+
+document.addEventListener('meme:app-ready', initAlgoliaSearch);

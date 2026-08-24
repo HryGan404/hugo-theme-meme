@@ -1,4 +1,4 @@
-window.addEventListener("DOMContentLoaded", event => {
+function initNavToggle() {
     // Create nav toggle icon
 
     const navToggleLabel = document.querySelector('.nav-toggle');
@@ -96,4 +96,6 @@ window.addEventListener("DOMContentLoaded", event => {
             }
         }
     }
-}, {once: true});
+}
+
+document.addEventListener('meme:app-ready', initNavToggle);

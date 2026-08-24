@@ -1,4 +1,4 @@
-window.addEventListener("DOMContentLoaded", event => {
+function initMultilingual() {
     const langSwitcher = document.getElementById('lang-switcher');
 
     if (langSwitcher) {
@@ -12,4 +12,6 @@ window.addEventListener("DOMContentLoaded", event => {
             langs.style = 'display: none';
         });
     }
-}, {once: true});
+}
+
+document.addEventListener('meme:app-ready', initMultilingual);

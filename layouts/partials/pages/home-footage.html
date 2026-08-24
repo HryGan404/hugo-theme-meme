@@ -1,4 +1,4 @@
-<main class="home">
+<main class="home" id="main">
     {{ with or .Site.Params.homeVideoWebm .Site.Params.homeVideoMp4 }}
         <video poster="{{ $.Site.Params.homePoster }}" playsinline autoplay muted loop>
             {{ with $.Site.Params.homeVideoWebm }}

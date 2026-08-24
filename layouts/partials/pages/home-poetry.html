@@ -1,4 +1,4 @@
-<main class="home">
+<main class="home" id="main">
     <div class="poetry">
         {{ range .Site.Params.homePoetry }}
             <p>{{ partial "utils/markdownify.html" (dict "$" $ "raw" . "isContent" false) }}</p>

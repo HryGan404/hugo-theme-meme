@@ -1,5 +1,9 @@
-window.addEventListener('DOMContentLoaded', () => {
-    const toc = document.querySelector('.post-toc-desktop');
+let disposeToc = () => {};
+
+function initToc(root) {
+    disposeToc();
+
+    const toc = root.querySelector('.post-toc-desktop');
     if (!toc) {
         return;
     }
@@ -21,7 +25,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     const headings = Array.from(
-        document.querySelectorAll(
+        root.querySelectorAll(
             '.post-body h2[id], .post-body h3[id], .post-body h4[id], .post-body h5[id], .post-body h6[id]'
         )
     ).filter((heading) => byHash.has(heading.id));
@@ -73,6 +77,20 @@ window.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', requestTick, { passive: true });
     window.addEventListener('resize', requestTick, { passive: true });
-    window.addEventListener('load', requestTick);
     update();
+
+    disposeToc = () => {
+        window.removeEventListener('scroll', requestTick);
+        window.removeEventListener('resize', requestTick);
+        indicator.remove();
+        disposeToc = () => {};
+    };
+}
+
+document.addEventListener('meme:page-before-swap', () => {
+    disposeToc();
+});
+
+document.addEventListener('meme:page-ready', (event) => {
+    initToc(event.detail.root);
 });

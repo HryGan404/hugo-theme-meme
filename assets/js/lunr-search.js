@@ -1,4 +1,4 @@
-window.addEventListener("DOMContentLoaded", event => {
+function initLunrSearch() {
     let index = null;
     let lookup = null;
     let queuedTerm = null;
@@ -198,4 +198,6 @@ window.addEventListener("DOMContentLoaded", event => {
         }
         return result;
     }
-}, {once: true});
+}
+
+document.addEventListener('meme:app-ready', initLunrSearch);

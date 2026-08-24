@@ -6,13 +6,34 @@
 // 1. https://tomspencer.dev/blog/2018/09/14/adding-click-to-copy-buttons-to-a-hugo-powered-blog/
 // 2. https://www.dannyguo.com/blog/how-to-add-copy-to-clipboard-buttons-to-code-blocks-in-hugo/
 
-window.addEventListener("DOMContentLoaded", event => {
+let clipboardPromise;
+
+function getClipboard() {
+    if (navigator && navigator.clipboard) {
+        return Promise.resolve(navigator.clipboard);
+    }
+
+    if (!clipboardPromise) {
+        clipboardPromise = new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = '{{ $src }}';
+            script.defer = true;
+            script.onload = () => resolve(clipboard);
+            script.onerror = reject;
+            document.head.appendChild(script);
+        });
+    }
+
+    return clipboardPromise;
+}
+
+function initCopyButtons(root) {
     const copyText = '{{ i18n "copy" }}';
     const copiedText = '{{ i18n "copied" }}';
     const copyIcon = '{{ partial "utils/icon.html" (dict "$" . "name" "copy" "class" "copy-icon") }}';
     const copiedIcon = '{{ partial "utils/icon.html" (dict "$" . "name" "circle-check" "class" "copied-icon") }}';
 
-    document.querySelectorAll('.post-body > pre').forEach((e) => {
+    root.querySelectorAll('.post-body > pre').forEach((e) => {
         const div = document.createElement('div');
         e.parentNode.replaceChild(div, e);
         div.appendChild(e);
@@ -96,7 +117,7 @@ window.addEventListener("DOMContentLoaded", event => {
     }
 
     function addCopyButtons(clipboard) {
-        document.querySelectorAll('.codeblock, table.lntable, .highlight > pre, .post-body > div > pre').forEach((containerEl) => {
+        root.querySelectorAll('.codeblock, table.lntable, .highlight > pre, .post-body > div > pre').forEach((containerEl) => {
             if (!containerEl.classList.contains('codeblock') && containerEl.closest('.codeblock')) {
                 return;
             }
@@ -105,16 +126,11 @@ window.addEventListener("DOMContentLoaded", event => {
         });
     }
 
-    if (navigator && navigator.clipboard) {
-        addCopyButtons(navigator.clipboard);
-    } else {
-        const script = document.createElement('script');
-        script.src = '{{ $src }}';
-        script.defer = true;
-        script.onload = function() {
-            addCopyButtons(clipboard);
-        };
+    getClipboard().then(addCopyButtons).catch((error) => {
+        console.error(error);
+    });
+}
 
-        document.head.appendChild(script);
-    }
-}, {once: true});
+document.addEventListener('meme:page-ready', (event) => {
+    initCopyButtons(event.detail.root);
+});

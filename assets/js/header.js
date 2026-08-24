@@ -1,6 +1,4 @@
-window.addEventListener(
-  'DOMContentLoaded',
-  (event) => {
+function initHeader() {
     /**
      * Measure header height for the scrolling fix
      */
@@ -34,6 +32,6 @@ window.addEventListener(
       );
       {{ end }}
     }
-  },
-  { once: true }
-);
+}
+
+document.addEventListener('meme:app-ready', initHeader);

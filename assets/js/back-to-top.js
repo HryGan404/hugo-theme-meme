@@ -1,4 +1,4 @@
-window.addEventListener("DOMContentLoaded", event => {
+function initBackToTop() {
     const backToTop = document.getElementById('back-to-top');
 
     if (backToTop !== null) {
@@ -9,4 +9,6 @@ window.addEventListener("DOMContentLoaded", event => {
             }, delayTime)
         );
     }
-}, {once: true});
+}
+
+document.addEventListener('meme:app-ready', initBackToTop);
