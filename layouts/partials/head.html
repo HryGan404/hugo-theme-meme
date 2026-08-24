@@ -1,18 +1,6 @@
 <head{{ if .Site.Params.openGraph }} prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#"{{ end }}>
     <meta charset="UTF-8" />
 
-    <script>
-        const skipReducedMotionTransition = (event) => {
-            if (event.viewTransition
-                && typeof event.viewTransition.skipTransition === "function"
-                && matchMedia("(prefers-reduced-motion: reduce)").matches) {
-                event.viewTransition.skipTransition();
-            }
-        };
-        addEventListener("pageswap", skipReducedMotionTransition, { once: true });
-        addEventListener("pagereveal", skipReducedMotionTransition, { once: true });
-    </script>
-
     {{ hugo.Generator }}
 
     {{- with .Site.Params.defaultTheme | default "light" -}}
