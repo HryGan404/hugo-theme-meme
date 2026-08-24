@@ -26,10 +26,18 @@
     }
 }
 
-/* Keep both navigation directions as a single opacity-only transition. */
+/* Fade through the page background so two scroll positions never overlap. */
+::view-transition-group(root) {
+    animation: none;
+}
+
+::view-transition-image-pair(root) {
+    background-color: var(--color-bg);
+}
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
-    animation-duration: 0.24s;
+    animation-duration: 0.18s;
     animation-timing-function: ease-in-out;
     animation-fill-mode: both;
 }
@@ -40,6 +48,7 @@
 
 ::view-transition-new(root) {
     animation-name: meme-page-fade-in;
+    animation-delay: 0.18s;
 }
 
 @media (prefers-reduced-motion: reduce) {
