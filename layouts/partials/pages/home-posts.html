@@ -17,11 +17,6 @@
                 <summary class="summary p-summary">
                     {{ partial "utils/summary.html" . }}
                 </summary>
-                {{ if or .Truncated .Params.summary }}
-                    <div class="read-more-container">
-                        <a href="{{ .RelPermalink }}" class="read-more-link">{{ i18n "readMore" }} »</a>
-                    </div>
-                {{ end }}
             </article>
         {{ end }}
         {{ if or $paginator.HasPrev $paginator.HasNext }}
