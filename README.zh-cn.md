@@ -1,8 +1,8 @@
 简体中文 |
-[繁體中文](https://github.com/reuixiy/hugo-theme-meme/blob/master/README.zh-tw.md) |
-[English](https://github.com/reuixiy/hugo-theme-meme/blob/master/README.md)
+[繁體中文](https://github.com/HryGan404/hugo-theme-meme/blob/main/README.zh-tw.md) |
+[English](https://github.com/HryGan404/hugo-theme-meme/blob/main/README.md)
 
-<div align="center"><img src="https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/static/icons/apple-touch-icon.png" /></div>
+<div align="center"><img src="https://raw.githubusercontent.com/HryGan404/hugo-theme-meme/main/static/icons/apple-touch-icon.png" /></div>
 
 # <div align="center">MemE</div>
 
@@ -12,7 +12,7 @@ MemE 是一个强大且可高度定制的 [GoHugo](https://github.com/gohugoio/h
 
 ## 预览
 
-[![tn.png](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/tn.png)](https://io-oi.me/hugo-theme-meme/)
+[![tn.png](https://raw.githubusercontent.com/HryGan404/hugo-theme-meme/main/images/tn.png)](https://io-oi.me/hugo-theme-meme/)
 
 ### 文档
 
@@ -50,12 +50,12 @@ https://gohugo.io/getting-started/quick-start/
 ```sh
 ~ $ cd blog
 ~/blog $ git init
-~/blog $ git submodule add --depth 1 https://github.com/reuixiy/hugo-theme-meme.git themes/meme
+~/blog $ git submodule add --depth 1 https://github.com/HryGan404/hugo-theme-meme.git themes/meme
 ```
 
 ### 开始写作
 
-1. 将 `hugo.toml` 替换为[示例配置](https://github.com/reuixiy/hugo-theme-meme/blob/master/config-examples/zh-cn/config.toml)。
+1. 将 `hugo.toml` 替换为[示例配置](https://github.com/HryGan404/hugo-theme-meme/blob/main/config-examples/zh-cn/config.toml)。
 
    ```sh
    ~/blog $ rm hugo.toml && cp themes/meme/config-examples/zh-cn/config.toml config.toml
@@ -76,7 +76,7 @@ https://gohugo.io/getting-started/quick-start/
 
 ## 定制 MemE
 
-MemE 通过 Hugo 管道实现使用 SCSS 生成 CSS，而非静态的 CSS 文件，同时提供一个 [`_custom.scss`](https://github.com/reuixiy/hugo-theme-meme/blob/master/assets/scss/custom/_custom.scss) 文件以供用户定制。
+MemE 通过 Hugo 管道实现使用 SCSS 生成 CSS，而非静态的 CSS 文件，同时提供一个 [`_custom.scss`](https://github.com/HryGan404/hugo-theme-meme/blob/main/assets/scss/custom/_custom.scss) 文件以供用户定制。
 
 直接新建一个 `~/blog/assets/scss/custom/_custom.scss` 并将你自己的样式加入其中，就能覆盖主题的 `~/blog/themes/meme/assets/scss/custom/_custom.scss` 文件，且其会正确地被应用。
 
@@ -101,10 +101,10 @@ MemE 通过 Hugo 管道实现使用 SCSS 生成 CSS，而非静态的 CSS 文件
 2. 重新克隆 MemE
 
    ```sh
-   ~/blog $ git clone --depth 1 https://github.com/reuixiy/hugo-theme-meme.git themes/meme
+   ~/blog $ git clone --depth 1 https://github.com/HryGan404/hugo-theme-meme.git themes/meme
    ```
 
-**特别注意**：MemE 主题有时会新增一些全新功能或一些毁灭改动，所以在你更新完后，请务必检查 [`config.toml` 的改动历史](https://github.com/reuixiy/hugo-theme-meme/commits/master/config-examples)并将相应内容也更新！
+**特别注意**：MemE 主题有时会新增一些全新功能或一些毁灭改动，所以在你更新完后，请务必检查 [`config.toml` 的改动历史](https://github.com/HryGan404/hugo-theme-meme/commits/main/config-examples)并将相应内容也更新！
 
 ## Awesome MemE
 

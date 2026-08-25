@@ -63,7 +63,7 @@ uglyURLs = false
     disableAliases = false
     # 每一分頁的文章數（僅對「文章摘要」首頁佈局有效）
     pagerSize = 5
-    path = 'page'
+    path = "page"
 
 # Markdown 渲染器
 [markup]
@@ -587,8 +587,8 @@ uglyURLs = false
     # 說明：文章的 Front Matter 中的 `mermaid`
     #      的優先順序高於此處
 
-    mermaidTheme = 'default'
-    mermaidThemeDark = 'dark'
+    mermaidTheme = "default"
+    mermaidThemeDark = "dark"
 
 
     ######################################

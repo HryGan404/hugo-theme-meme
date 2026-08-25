@@ -1,8 +1,8 @@
 English |
-[简体中文](https://github.com/reuixiy/hugo-theme-meme/blob/master/README.zh-cn.md) |
-[繁體中文](https://github.com/reuixiy/hugo-theme-meme/blob/master/README.zh-tw.md)
+[简体中文](https://github.com/HryGan404/hugo-theme-meme/blob/main/README.zh-cn.md) |
+[繁體中文](https://github.com/HryGan404/hugo-theme-meme/blob/main/README.zh-tw.md)
 
-<div align="center"><img src="https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/static/icons/apple-touch-icon.png" /></div>
+<div align="center"><img src="https://raw.githubusercontent.com/HryGan404/hugo-theme-meme/main/static/icons/apple-touch-icon.png" /></div>
 
 # <div align="center">MemE</div>
 
@@ -12,7 +12,7 @@ MemE is a powerful and highly customizable [GoHugo](https://github.com/gohugoio/
 
 ## Preview
 
-[![tn.png](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/tn.png)](https://io-oi.me/hugo-theme-meme/)
+[![tn.png](https://raw.githubusercontent.com/HryGan404/hugo-theme-meme/main/images/tn.png)](https://io-oi.me/hugo-theme-meme/)
 
 ### Browser support
 
@@ -46,12 +46,12 @@ For users of other systems, see: https://gohugo.io/getting-started/installing/
 ```sh
 ~ $ cd blog
 ~/blog $ git init
-~/blog $ git submodule add --depth 1 https://github.com/reuixiy/hugo-theme-meme.git themes/meme
+~/blog $ git submodule add --depth 1 https://github.com/HryGan404/hugo-theme-meme.git themes/meme
 ```
 
 ### Blogging
 
-1. Replace `hugo.toml` with [config examples](https://github.com/reuixiy/hugo-theme-meme/blob/master/config-examples/en/config.toml).
+1. Replace `hugo.toml` with [config examples](https://github.com/HryGan404/hugo-theme-meme/blob/main/config-examples/en/config.toml).
 
    ```sh
    ~/blog $ rm hugo.toml && cp themes/meme/config-examples/en/config.toml config.toml
@@ -72,7 +72,7 @@ For users of other systems, see: https://gohugo.io/getting-started/installing/
 
 ## Customize MemE
 
-MemE uses SCSS via [Hugo Pipes](https://gohugo.io/hugo-pipes/introduction/) to generate CSS instead of static CSS file and provides a [`_custom.scss`](https://github.com/reuixiy/hugo-theme-meme/blob/master/assets/scss/custom/_custom.scss) for customization.
+MemE uses SCSS via [Hugo Pipes](https://gohugo.io/hugo-pipes/introduction/) to generate CSS instead of static CSS file and provides a [`_custom.scss`](https://github.com/HryGan404/hugo-theme-meme/blob/main/assets/scss/custom/_custom.scss) for customization.
 
 Just create a `~/blog/assets/scss/custom/_custom.scss` and add your own styles into this file. Your `_custom.scss` will override `~/blog/themes/meme/assets/scss/custom/_custom.scss` and your custom CSS will be applied correctly.
 
@@ -97,10 +97,10 @@ If failed, try:
 2. Clone MemE again
 
    ```sh
-   ~/blog $ git clone --depth 1 https://github.com/reuixiy/hugo-theme-meme.git themes/meme
+   ~/blog $ git clone --depth 1 https://github.com/HryGan404/hugo-theme-meme.git themes/meme
    ```
 
-**Note that** MemE makes some brand new features or _breaking changes_ sometimes, so please be sure to check [the modification history of `config.toml`](https://github.com/reuixiy/hugo-theme-meme/commits/master/config-examples) and update the related items after the update!
+**Note that** MemE makes some brand new features or _breaking changes_ sometimes, so please be sure to check [the modification history of `config.toml`](https://github.com/HryGan404/hugo-theme-meme/commits/main/config-examples) and update the related items after the update!
 
 ## Awesome MemE
 

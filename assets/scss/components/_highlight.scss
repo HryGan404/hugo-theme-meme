@@ -85,7 +85,10 @@
         &:focus-visible,
         &.is-copied {
             color: var(--color-primary);
+            transform: scale(1.08);
         }
+
+        transition: color $duration, transform $duration;
     }
 
     .highlight,

@@ -7,7 +7,7 @@
                 {{ $path := (urls.Parse ($tag | urlize)).Path }}
                 {{ with $.Site.GetPage (printf `/tags/%s` $path) }}
                     {{ $icon := partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.postTagsIcon "class" "tag-icon") }}
-                    <a href="{{ .RelPermalink }}" rel="tag" class="post-tags-link">{{ $icon  }}{{ .LinkTitle | default $path }}</a>
+                    <a href="{{ .RelPermalink }}" rel="tag" class="post-tags-link">{{ $icon }}{{ .LinkTitle | default $path }}</a>
                 {{ end }}
             {{ end }}
         </div>

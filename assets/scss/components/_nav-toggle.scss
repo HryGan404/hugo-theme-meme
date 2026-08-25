@@ -25,7 +25,7 @@
         height: 0.1em;
         width: 1em;
         background-color: var(--color-contrast-high);
-        transition: all $duration;
+        transition: top $duration, width $duration, opacity $duration, transform $duration;
         &:nth-child(1) {
             top: 0.4em;
         }

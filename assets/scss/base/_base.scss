@@ -8,6 +8,17 @@
     navigation: none;
 }
 
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
 html, body {
     margin: 0;
     width: 100%;
@@ -25,7 +36,7 @@ body {
     overflow-wrap: break-word;
     word-wrap: break-word;
     line-height: 1.618;
-    transition: all $duration;
+    transition: background-color $duration, color $duration;
 }
 
 .container {
@@ -84,21 +95,21 @@ h3 {
 }
 h4 {
     font-size: 1.125em;
-    font-weight: 500;
+    font-weight: 700;
 }
 h5 {
     font-size: 1em;
-    font-weight: 500;
+    font-weight: 700;
 }
 h6 {
     font-size: 0.875em;
-    font-weight: 500;
+    font-weight: 700;
 }
 
 a {
     color: var(--color-contrast-high);
     text-decoration: none;
-    transition: all $duration;
+    transition: color $duration;
     &:hover {
         color: var(--color-primary);
     }

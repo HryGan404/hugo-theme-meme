@@ -65,7 +65,7 @@ uglyURLs = false
     # lists (valid for the `posts` homepage
     # layout in MemE)
     pagerSize = 5
-    path = 'page'
+    path = "page"
 
 # Markdown renderer
 [markup]
@@ -644,8 +644,8 @@ uglyURLs = false
     #       `mermaid` in post’s Front Matter
     #       has a higher priority than here
 
-    mermaidTheme = 'default'
-    mermaidThemeDark = 'dark'
+    mermaidTheme = "default"
+    mermaidThemeDark = "dark"
 
 
     ######################################

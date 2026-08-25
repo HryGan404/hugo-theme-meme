@@ -292,7 +292,7 @@ blockquote {
     }
     .anchor-link {
         opacity: var(--anchor-opacity);
-        transition: all ($duration / 2);
+        transition: opacity ($duration / 2);
     }
     .post {
         h1, h2, h3, h4, h5, h6, .anchor-link {
@@ -373,7 +373,7 @@ pre {
         font-size: inherit;
         color: var(--color-bg);
         background-color: alpha(var(--color-contrast-medium), 0.5);
-        transition: all $duration;
+        transition: background-color $duration, color $duration;
         cursor: pointer;
         &:hover {
             background-color: alpha(var(--color-primary), 0.5);
